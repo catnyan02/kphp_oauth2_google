@@ -2,7 +2,6 @@
   "name": "nyan02/kphp_oauth2_google",
   "description": "Google OAuth 2.0 Client Provider for KPHP OAuth2 Client",
   "license": "MIT",
-  "minimum-stability": "dev",
   "authors": [
     {
       "name": "Nastya Nesterenko"
