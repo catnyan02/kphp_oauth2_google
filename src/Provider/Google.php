@@ -38,6 +38,14 @@ class Google extends AbstractProvider
         return 'https://openidconnect.googleapis.com/v1/userinfo';
     }
 
+    /**
+     * @param string $hostedDomain
+     */
+    public function setHostedDomain(string $hostedDomain): void
+    {
+        $this->hostedDomain = $hostedDomain;
+    }
+
     public function getAuthorizationParameters(?string $state = null, ?string $scope = null, ?string $redirectUri = null,
                                                   ?string $hd = null, ?string $access_type = null, ?string $prompt= null): GoogleAuthorizationParameters
     {
