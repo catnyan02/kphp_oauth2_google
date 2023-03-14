@@ -135,7 +135,6 @@ class Google extends AbstractProvider
     protected function createResourceOwner(string $response, AccessTokenInterface $token): GoogleUser
     {
         $user = JsonEncoder::decode($response, GoogleUser::class);
-        echo $user->hd;
         $this->assertMatchingDomain($user->hd);
 
         return $user;

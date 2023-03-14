@@ -8,7 +8,7 @@ class GoogleAuthorizationParameters implements AuthorizationParametersInterface
     public string $client_id;
     public string $redirect_uri;
     public string $state;
-    public ?string $hosted_domain;
+    public ?string $hd;
     public ?string $access_type;
     public ?string $prompt;
     public string $scope;
@@ -27,7 +27,7 @@ class GoogleAuthorizationParameters implements AuthorizationParametersInterface
         $this->redirect_uri = $redirect_uri;
         $this->scope = $scope;
         $this->state = $state;
-        $this->hosted_domain = $hosted_domain;
+        $this->hd = $hosted_domain;
         $this->access_type = $access_type;
         $this->prompt = $prompt;
 
