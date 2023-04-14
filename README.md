@@ -1,11 +1,11 @@
 This package provides Google OAuth 2.0 support for the KPHP
 
-###Installation
+### Installation
 To install, use composer:
 
 ```composer require nyan02/kphp_oauth2_google```
 
-###Usage
+### Usage
 Usage is similar to KPHP OAuth client, using nyan02\kphp_oauth2_client\Provider\Google
 as the provider.
 
@@ -17,7 +17,7 @@ on your G Suite/Google Apps for Business accounts (corporate emails),
 you can configure the provider to set Hosted Domain.
 
 You can see the example below.
-###Authorization Code Example
+### Authorization Code Example
 ```
 <?php
 
@@ -80,7 +80,7 @@ if (!empty($_GET['error'])) {
 }
 ```
 
-###Authorization Code Flow
+### Authorization Code Flow
 After configuring provider we want to get Authorization Code. We use
 method getAuthorizationParameters() to get parameters from the provider
 including permission scopes and other info needed for generating
@@ -100,7 +100,7 @@ And pass it to getAccessToken method together with the code we've got.
 
 Now we have the Access Token to Resource.
 
-###Getting ResourceOwner Information
+### Getting ResourceOwner Information
 With Access Token we can now access User's information.
 
 ```$ownerDetails = $provider->getResourceOwner($token);```
