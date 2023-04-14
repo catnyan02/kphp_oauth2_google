@@ -1,3 +1,23 @@
+This package provides Google OAuth 2.0 support for the KPHP
+
+###Installation
+To install, use composer:
+
+```composer require nyan02/kphp_oauth2_google```
+
+###Usage
+Usage is similar to KPHP OAuth client, using nyan02\kphp_oauth2_client\Provider\Google
+as the provider.
+
+You need to create a new Provider object specifying google-client-id,
+google-client-secret and callback-url.
+
+If you want to restrict access and allow it only for users 
+on your G Suite/Google Apps for Business accounts (corporate emails), 
+you can configure the provider to set Hosted Domain.
+
+You can see the example below.
+###Authorization Code Example
 ```
 <?php
 
@@ -59,3 +79,33 @@ if (!empty($_GET['error'])) {
     }
 }
 ```
+
+###Authorization Code Flow
+After configuring provider we want to get Authorization Code. We use
+method getAuthorizationParameters() to get parameters from the provider
+including permission scopes and other info needed for generating
+AuthorizationUrl.
+
+Next we generate AuthorizationUrl using method getAuthorizationUrl($params)
+and passing parameters we've got before. Now that we have the Url we can
+redirect the user to Authorization page of provider.
+
+Once we've got Authorization Code we create a placeholder class for it
+
+```new AuthorizationCode($provider->getClientId(), $provider->getClientSecret(), $provider->getRedirectUri())```
+
+And pass it to getAccessToken method together with the code we've got.
+
+```$token = $provider->getAccessToken($grant, ['code' => $_GET['code']]);```
+
+Now we have the Access Token to Resource.
+
+###Getting ResourceOwner Information
+With Access Token we can now access User's information.
+
+```$ownerDetails = $provider->getResourceOwner($token);```
+
+Implemented methods for GoogleResourceOwner are getId() and
+toJSON(). All the class attributes are public, so you can directly
+access them. GoogleResourceOwner has the following attributes:
+sub, name, given_name, family_name, locale, hd, email, picture.
